@@ -34,7 +34,7 @@ def convert_match_time(iso_time):
 def get_fixtures(
     league: str = "eng.1",
     filter_by_window: bool = False,
-    espn_date: Optional[str] = None,  # new: YYYYMMDD
+    espn_date: Optional[str] = None,
 ) -> list:
     """
     If espn_date is given, pass it as the 'dates' param to ESPN,
@@ -74,6 +74,8 @@ def get_fixtures(
                     "local_time":    local_time,
                     "utc_time":      match_time_utc.strftime("%H:%M") if match_time_utc else "Unknown",
                     "status":        event["status"]["type"]["name"].upper(),
+                    # store both code and display name
+                    "league_code":   league,
                     "league":        data.get("leagues", [{}])[0].get("name", "Unknown League"),
                     "home_score":    int(home.get("score", 0)),
                     "away_score":    int(away.get("score", 0)),
