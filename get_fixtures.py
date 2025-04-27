@@ -74,7 +74,7 @@ def get_fixtures(
                     "local_time":    local_time,
                     "utc_time":      match_time_utc.strftime("%H:%M") if match_time_utc else "Unknown",
                     "status":        event["status"]["type"]["name"].upper(),
-                    # store both code and display name
+                    # store both code and display name:
                     "league_code":   league,
                     "league":        data.get("leagues", [{}])[0].get("name", "Unknown League"),
                     "home_score":    int(home.get("score", 0)),
